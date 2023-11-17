@@ -1,0 +1,23 @@
+.timeline{
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.timeline_left{
+    margin-top: 2rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 0.7;
+
+}
+
+.timeline_right{
+    display: flex;
+    justify-content: flex-start;
+    flex: 0.3;
+}
+

@@ -1,0 +1,26 @@
+.login{
+    background-color: #1E265D;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    text-align: center;
+}
+
+.title{
+    font-weight: bold;
+    font-size: 24px;
+    color: #fff;
+}
+
+.logo{
+    width: 150px;
+}
+
+.back{
+    color: #fff;
+    
+}
+
+

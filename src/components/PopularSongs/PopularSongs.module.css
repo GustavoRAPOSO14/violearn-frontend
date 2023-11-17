@@ -1,0 +1,38 @@
+.pop_songs{
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    margin-top: 2em;
+    height: 300px;
+    width: 100%;
+}
+
+.pop_songs p{
+    color: rgba(139, 0, 255, 1);
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.top_usernames{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top_username{
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    padding-bottom: 1.5rem;
+    width: 100%;
+}
+
+.top_username_info{
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.id_username{
+    font-size: 13px;
+    color: grey;
+}
+

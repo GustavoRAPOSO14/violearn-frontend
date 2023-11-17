@@ -1,13 +1,119 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+  --roxo--background: #1E265D;
+  --roxo--botao: rgba(139, 0, 255, 1);
+  --branco: rgba(255, 255, 255, 1);
+  --font--principal: 'Lato', sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+
+
+body{
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  font-family: var(--font--principal);
+  overflow-x:hidden ;
+}
+
+
+input::placeholder,
+textarea::placeholder{
+  font-family: var(--font--principal);
+  font-size: 20px;
+}
+
+header img:hover{
+  transform: scale(1.02);
+}
+
+
+aside a{
+  text-decoration: none;
+  height: 60px;
+  background: transparent;
+  border: 0;
+  color: var(--roxo--background);
+  cursor: pointer;
+  text-align: left;
+  padding: 0;
+}
+
+aside a > span{
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  height: 48px;
+  margin-bottom: 1rem;
+  padding: 0 16px 0 12px;
+  border-radius: 10px;
+  line-height: 1;
+  width: 200px;
+}
+
+aside a:hover > span{
+  background-color: #f3eded;
+}
+
+aside a > span .icon-e{
+  position: relative;
+  font-size: 30px;
+  transition: 0.2s;
+}
+
+aside a:hover > span .icon-e{
+  transform: scale(1.07);
+  transition: transform 0.2s;
+}
+
+/* 
+.logo{
+  width: 10rem;
+} */
+
+
+
+
+/* form styles */
+
+form{
+  max-width: 40%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+input{
+  box-sizing: border-box;
+  margin-top: 10px;
+  width: 300px;
+  height: 56px;
+  border-radius: 12px;
+  border: 1px var(--roxo--botao);
+  padding: 0 1em;
+  align-self: center;
+
+
+}
+
+
+.btn{
+  padding: 17px 0;
+  margin-top: 27px;
+  width: 300px;
+  text-transform: uppercase;
+  color: var(--branco);
+  background: var(--roxo--botao);
+  border: none;
+  border-radius: 12px;
+}
+
+.btn:hover{
+    background: #bf40bf;
+    cursor: pointer;
+}
+
+
+.link-footer{
+  color: blueviolet;
+  text-decoration: none;
 }

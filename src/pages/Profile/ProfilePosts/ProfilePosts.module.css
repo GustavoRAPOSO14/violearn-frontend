@@ -1,0 +1,6 @@
+.profiles_posts_container{
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 300px);
+    gap: 2rem;
+}

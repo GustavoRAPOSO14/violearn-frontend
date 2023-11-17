@@ -1,0 +1,10 @@
+.feed{
+    margin-left: 272px;
+    min-height: 100vh;
+}
+ 
+@media (width < 920px){
+    .feed{
+        margin-left: 103px;
+    }
+}
