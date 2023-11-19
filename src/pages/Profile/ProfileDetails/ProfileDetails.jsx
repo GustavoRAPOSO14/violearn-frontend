@@ -2,8 +2,21 @@ import styles from './ProfileDetails.module.css';
 
 import userPic from "../../../images/calvo.png";
 
+import {NavLink} from 'react-router-dom';
+import { useContext } from 'react';
+
+import { ModalContext } from '../../../context/ModalContext';
+
 
 const ProfileDetails = () => {
+
+    const { setDeleteOpen} = useContext(ModalContext);
+
+    const handleModal = () => {
+        setDeleteOpen(prev => !prev)
+    }
+
+
     return (
         <div className={styles.details_container}>
             <div>
@@ -14,7 +27,10 @@ const ProfileDetails = () => {
             <div>
                 <div className={styles.details_info}>
                     <p>RogerGuedes_</p>
-                    <button>Edit profile</button>
+                    <NavLink to="/update">
+                        <button>Edit profile</button>
+                    </NavLink>
+                    <button onClick={handleModal}>Excluir perfil</button>
                 </div>
                 <div className={styles.details_info_posts}>
                     <div>

@@ -6,14 +6,16 @@ import styles from './Home.module.css'
 
 import { useLocation } from 'react-router-dom';
 
-import { useState, useContext } from 'react';
+import { useContext } from 'react';
 
 import { ModalContext } from '../../context/ModalContext';
 import Profile from '../Profile/Profile';
+import ProfileUpdate from '../ProfileUpdate/ProfileUpdate';
+import DeleteModal from '../../components/CreateModal/DeleteModal/DeleteModal';
 
 const Home = () => {
     
-    const {isModalOpen} = useContext(ModalContext);
+    const {isModalOpen, isDeleteOpen} = useContext(ModalContext);
 
     const location = useLocation();
 
@@ -29,8 +31,12 @@ const Home = () => {
                 {location.pathname === "/user" &&(
                     <Profile/>
                 )}
+                {location.pathname === "/update" && (
+                    <ProfileUpdate/>
+                )}
             </div>
             {isModalOpen && <CreateModal/>}
+            {isDeleteOpen && <DeleteModal/>}
         </div>
     )
 }

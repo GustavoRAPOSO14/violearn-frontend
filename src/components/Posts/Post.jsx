@@ -5,7 +5,6 @@ import {Avatar} from '@mui/material';
 import PostPhoto from '../../images/postphoto.jpg';
 
 //icons
-import { FaComment } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 
 const Post = () => {
@@ -28,7 +27,6 @@ const Post = () => {
             </div>
             <div className={styles.post_footer}>
                 <div className={styles.post_footer_icons}>
-                <FaComment className={styles.post_footer_icon} />
                 <FaHeart className={styles.post_footer_icon} />
                 </div>
             </div>

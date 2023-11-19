@@ -30,6 +30,7 @@ const Router = () => {
                 <Routes>
                     <Route path="/" element={<Home/>}/>
                     <Route path="/user" element={<Home/>}/>
+                    <Route path='/update' element={<Home/>}/>
                 </Routes>
             </div>
             )}
@@ -37,7 +38,7 @@ const Router = () => {
                 <div>
                     <Routes>
                         <Route path='/login' element={<Login/>}/>
-                        <Route path='/register' element={<Register/>}/> 
+                        <Route path='/register' element={<Register/>}/>
                     </Routes>
                 </div>
             )}
