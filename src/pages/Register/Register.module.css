@@ -8,6 +8,10 @@
     text-align: center;
 }
 
+.register form > input{
+    font-size: 16px;
+}
+
 
 .title{
     font-weight: bold;

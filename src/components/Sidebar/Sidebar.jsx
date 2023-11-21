@@ -5,6 +5,8 @@ import { useContext } from 'react';
 
 import { ModalContext } from '../../context/ModalContext';
 
+import { useAuthentication } from '../../hooks/useAuthentication';
+
 //icons
 import { TiHome } from "react-icons/ti";
 import { FaRegSquarePlus } from "react-icons/fa6";
@@ -17,6 +19,8 @@ import { RiLogoutBoxLine } from "react-icons/ri";
 import userPic from "../../images/calvo.png";
 
 const Sidebar = () => {
+
+    const { logout } = useAuthentication();
 
     const {setIsModalOpen} = useContext(ModalContext);
 
@@ -50,7 +54,7 @@ const Sidebar = () => {
                         <span className={styles.sidebar_text}>Playlist</span>
                     </span>
                 </NavLink>
-                <NavLink>
+                <NavLink onClick={logout}>
                     <span>
                         <RiLogoutBoxLine className="icon-e" />
                         <span className={styles.sidebar_text}>Sair</span>

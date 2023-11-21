@@ -1,9 +1,9 @@
 import styles from './Router.module.css';
 
 import Sidebar from "../../components/Sidebar/Sidebar";
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 
-
+import { useAuthValue } from '../../context/AuthContext';
 
 //pages
 import Home from '../Home/Home';
@@ -12,6 +12,7 @@ import Register from '../../pages/Register/Register';
 
 const Router = () => {
 
+    const { user } = useAuthValue();
 
     const location = useLocation();
 
@@ -28,17 +29,17 @@ const Router = () => {
             // </div>
             <div>
                 <Routes>
-                    <Route path="/" element={<Home/>}/>
-                    <Route path="/user" element={<Home/>}/>
-                    <Route path='/update' element={<Home/>}/>
+                    <Route path="/" element={user ? <Home/> : <Navigate to="/login"/>}/>
+                    <Route path="/user" element={user ? <Home/> : <Navigate to="/login"/>}/>
+                    <Route path='/update' element={user ? <Home/> : <Navigate to="/login"/>}/>
                 </Routes>
             </div>
             )}
             {(location.pathname === "/login" || location.pathname === "/register") && (
                 <div>
                     <Routes>
-                        <Route path='/login' element={<Login/>}/>
-                        <Route path='/register' element={<Register/>}/>
+                        <Route path='/login' element={!user ? <Login/> : <Navigate to="/"/>}/>
+                        <Route path='/register' element={!user ? <Register/> : <Navigate to="/"/>}/>
                     </Routes>
                 </div>
             )}
