@@ -4,17 +4,49 @@ import Sidebar from "../../components/Sidebar/Sidebar";
 import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 
 import { useAuthValue } from '../../context/AuthContext';
+import { useUserValue } from '../../context/UserContext';
 
 //pages
 import Home from '../Home/Home';
 import Login from '../../pages/Login/Login';
 import Register from '../../pages/Register/Register';
+import { useEffect, useState } from 'react';
 
 const Router = () => {
 
-    const { user } = useAuthValue();
+    const { user} = useAuthValue();
 
     const location = useLocation();
+
+    const {setUserInfo, userInfo} = useUserValue();
+
+
+    useEffect(() => {
+
+        const fetchData = () => {
+           try {
+            const timer = setTimeout(() => {
+                fetch(`http://localhost:8080/users/${user.uid}`)
+                .then((response) => response.json())
+                .then((json) => setUserInfo(json))
+            }, 3000)
+            
+            return () => {
+                clearTimeout(timer)
+            }
+            
+           } catch (error) {
+            console.log(error.message)
+           }
+        }
+        if (!user){
+            return
+        }
+        fetchData()
+
+
+    }, [user])
+
 
     return (
         <div>
@@ -35,6 +67,7 @@ const Router = () => {
                 </Routes>
             </div>
             )}
+        
             {(location.pathname === "/login" || location.pathname === "/register") && (
                 <div>
                     <Routes>

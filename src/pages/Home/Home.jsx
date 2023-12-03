@@ -6,22 +6,35 @@ import styles from './Home.module.css'
 
 import { useLocation } from 'react-router-dom';
 
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 import { ModalContext } from '../../context/ModalContext';
 import Profile from '../Profile/Profile';
 import ProfileUpdate from '../ProfileUpdate/ProfileUpdate';
 import DeleteModal from '../../components/CreateModal/DeleteModal/DeleteModal';
 
+import { useUserValue } from '../../context/UserContext';
+
 const Home = () => {
-    
+
     const {isModalOpen, isDeleteOpen} = useContext(ModalContext);
 
     const location = useLocation();
 
+    const { userInfo} = useUserValue();
+
+    if(userInfo){
+        console.log(userInfo)
+    }
+    
+
+  
+
     return (
         <div className={styles.homepage}>
-            <div className={styles.homepage_nav}>
+            {userInfo && (
+                <>
+                <div className={styles.homepage_nav}>
                 <Sidebar/>
             </div>
             <div className={styles.homepage_timeline}>
@@ -37,6 +50,11 @@ const Home = () => {
             </div>
             {isModalOpen && <CreateModal/>}
             {isDeleteOpen && <DeleteModal/>}
+                </>
+            )}
+            {!userInfo && <p>Carregando...</p>}
+           
+            
         </div>
     )
 }

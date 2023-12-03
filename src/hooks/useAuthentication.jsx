@@ -5,14 +5,20 @@ import {
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
     updateProfile,
-    signOut
+    signOut,
 } from 'firebase/auth';
 
 import { useState, useEffect } from 'react';
 
+
+
 export const useAuthentication = () => {
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(null);
+
+
+    
+
 
 
     //cleanup - memory leak
@@ -38,11 +44,39 @@ export const useAuthentication = () => {
             const {user} = await createUserWithEmailAndPassword(
                 auth,
                 data.email,
-                data.password
+                data.password,
+                data.displayName,
+                data.userName,
+                data.profileImage
             )
 
+            let payload = {
+	            "userId": user.uid,
+	            "userName": data.userName,
+	            "name": data.displayName,
+	            "profileImage": ""
+            }
+
+            const requestOptions = {
+                method: "POST",
+                headers: {
+                    "Content-type": 'application/json'
+                },
+                body: JSON.stringify(payload)
+            }
+
+            fetch("http://localhost:8080/users", requestOptions)
+            .then(response => response.json())
+            .then(data => {
+
+            })
+            .catch(error => {
+
+            })
+
+
             await updateProfile(user, {
-                displayName: data.displayName
+                displayName: data.displayName,
             })
 
             setLoading(false);
@@ -109,6 +143,71 @@ export const useAuthentication = () => {
     }
 
 
+    //delete user
+    const deleteUser = (user) => {
+        if (user){
+            user.delete();
+        }
+
+        const requestOptions = {
+            method: "DELETE",
+            headers: {
+                "Content-type": 'application/json'
+            }
+        }
+
+        fetch(`http://localhost:8080/users/${user.uid}`, requestOptions)
+        .then(response => response.json())
+        .catch(error => {
+
+        })
+
+    }
+
+    //update
+    const update = async (data, newData) => {
+        checkIfIsCancelled();
+
+        setLoading(true)
+        setError(null)
+
+        
+        try {
+
+            let payload = {
+                "userId": data.userId,
+                "userName": data.userName,
+                "name": newData.name,
+                "profileImage": newData.url
+            }
+    
+            const requestOptions = {
+                method: "PUT",
+                headers: {
+                    "Content-type": 'application/json'
+                },
+                body: JSON.stringify(payload)
+            }
+    
+            fetch(`http://localhost:8080/users/${data.userId}`, requestOptions)
+            .then(response => response.json())
+            .then(data => {
+    
+            })
+
+           
+            
+        } catch (error) {
+            
+            console.log(error.message)
+            console.log(typeof error.message)
+        }
+
+    }
+
+
+
+
     useEffect(() => {
         return () => setCancelled(true)
     }, [])
@@ -119,7 +218,9 @@ export const useAuthentication = () => {
         error,
         loading,
         logout,
-        login
+        login,
+        deleteUser,
+        update,
     }
 
 }

@@ -7,23 +7,23 @@ import PostPhoto from '../../images/postphoto.jpg';
 //icons
 import { FaHeart } from "react-icons/fa";
 
-const Post = () => {
+const Post = ({nome, text, image}) => {
     return (
         <div className={styles.post}>
             <div className={styles.post_header}>
                 <div className={styles.post_header_author}>
-                    <Avatar>C</Avatar>
-                    <strong>Stephen Curry</strong> 
+                    <Avatar></Avatar>
+                    <strong>{nome}</strong> 
                 </div> 
                 <div className={styles.post_header_timestamp}>
                     <span>12h</span>
                 </div>
             </div>
             <div className={styles.post_text}>
-                <p>Além de o melhor arremessador de todos os tempo, o pai ainda acha tempo pra tocar lol.</p>
+                <p>{text}</p>
             </div>
             <div className={styles.post_image}>
-                <img src={PostPhoto} alt="" />
+                <img src={image} alt="" />
             </div>
             <div className={styles.post_footer}>
                 <div className={styles.post_footer_icons}>

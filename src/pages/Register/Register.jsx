@@ -22,6 +22,8 @@ const Register = () => {
 
     const {createUser, error: authError, loading} = useAuthentication();
 
+
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -30,7 +32,8 @@ const Register = () => {
         const user = {
             displayName,
             email,
-            password
+            password,
+            userName
         }
 
         if (password !== confirmPassword){
@@ -63,6 +66,15 @@ const Register = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 />
+                
+                <input 
+                type="text" 
+                name='userName' 
+                required 
+                placeholder='Nome do usuário:'
+                value={userName}
+                onChange={(e) => setUserName(e.target.value)}
+                />
                 <input 
                 type="text" 
                 name='displayName' 
@@ -70,14 +82,6 @@ const Register = () => {
                 placeholder='Nome completo:'
                 value={displayName}
                 onChange={(e) => setDisplayName(e.target.value)}
-                />
-                <input 
-                type="text" 
-                name='username' 
-                required 
-                placeholder='Nome do usuário:'
-                value={userName}
-                onChange={(e) => setUserName(e.target.value)}
                 />
                 <input 
                 type="password" 
@@ -101,7 +105,6 @@ const Register = () => {
             </form>
             <SocialLogin/>
             <p className={styles.back}>Retornar para o <NavLink className="link-footer" to="/login">Início</NavLink></p>
-
         </div>
     )
 }
