@@ -65,7 +65,7 @@ export const useAuthentication = () => {
                 body: JSON.stringify(payload)
             }
 
-            fetch("http://localhost:8080/users", requestOptions)
+            fetch("https://okay-hour-production.up.railway.app/users", requestOptions)
             .then(response => response.json())
             .then(data => {
 
@@ -156,7 +156,7 @@ export const useAuthentication = () => {
             }
         }
 
-        fetch(`http://localhost:8080/users/${user.uid}`, requestOptions)
+        fetch(`https://okay-hour-production.up.railway.app/users/${user.uid}`, requestOptions)
         .then(response => response.json())
         .catch(error => {
 
@@ -189,7 +189,7 @@ export const useAuthentication = () => {
                 body: JSON.stringify(payload)
             }
     
-            fetch(`http://localhost:8080/users/${data.userId}`, requestOptions)
+            fetch(`https://okay-hour-production.up.railway.app/users/${data.userId}`, requestOptions)
             .then(response => response.json())
             .then(data => {
     

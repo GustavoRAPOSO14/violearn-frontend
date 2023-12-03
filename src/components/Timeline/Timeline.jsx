@@ -12,7 +12,7 @@ const Timeline = () => {
     const [posts, setPosts] = useState("");
 
     useEffect(() => {
-        fetch("http://localhost:8080/post")
+        fetch("https://okay-hour-production.up.railway.app/post")
     .then(response => response.json())
     .then(data => {
         console.log(data)

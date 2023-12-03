@@ -26,10 +26,10 @@ const Router = () => {
         const fetchData = () => {
            try {
             const timer = setTimeout(() => {
-                fetch(`http://localhost:8080/users/${user.uid}`)
+                fetch(`https://okay-hour-production.up.railway.app/users/${user.uid}`)
                 .then((response) => response.json())
                 .then((json) => setUserInfo(json))
-            }, 3000)
+            }, 4500)
             
             return () => {
                 clearTimeout(timer)

@@ -75,7 +75,7 @@ const CreateModal = () => {
                         body: JSON.stringify(payload),
                     }
                     
-                    fetch("http://localhost:8080/post", requestOptions)
+                    fetch("https://okay-hour-production.up.railway.app/post", requestOptions)
                     .then(response => response.json())
                     .then(data => {
                         console.log(data)
