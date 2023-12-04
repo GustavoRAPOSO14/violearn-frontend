@@ -30,7 +30,7 @@ const Router = () => {
                 .then((response) => response.json())
                 .then((json) => setUserInfo(json))
             }, 4500)
-            
+
             return () => {
                 clearTimeout(timer)
             }
