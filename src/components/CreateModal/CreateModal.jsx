@@ -24,6 +24,9 @@ const CreateModal = () => {
     const [progress, setProgress] = useState(0);
     const [loading, setLoading] = useState(false);
 
+
+
+
     const handleFileChange = (e) => {
 
         const imageFile = e.target.files[0];
@@ -55,6 +58,7 @@ const CreateModal = () => {
                 console.log(error)
             },
             () => {
+
                 getDownloadURL(uploadTask.snapshot.ref).then(url => {
                     console.log(url)
                     setImage(url)
@@ -70,24 +74,23 @@ const CreateModal = () => {
                     const requestOptions = {
                         method: "POST",
                         headers: {
-                            "Content-Type": 'application/json'
+                            "Content-type": 'application/json'
                         },
-                        body: JSON.stringify(payload),
+                        body: JSON.stringify(payload)
                     }
                     
                     fetch("https://okay-hour-production.up.railway.app/post", requestOptions)
                     .then(response => response.json())
                     .then(data => {
-                        console.log(data)
+                        
                     })
                     .catch(error => {
 
                     })
 
-                    window.location.reload();
-                    setLoading(false)
-
                 })
+                window.location.reload();
+                setLoading(false)
             }
         )
 
@@ -114,8 +117,9 @@ const CreateModal = () => {
                     </div>
                     <textarea name="caption" placeholder='Digite aqui o que esta pensando'
                     onChange={(e) => setText(e.target.value)}></textarea>
+                    {!selectedFile && <button  className="btn" disabled>Enviar</button> }
+                    {selectedFile && <button  className="btn">Enviar</button> }
                     {loading && <button className="btn" disabled>Aguarde...</button> }
-                    {!loading && <button className="btn">Enviar</button>}
                     </form>      
             </div>
         </div>
