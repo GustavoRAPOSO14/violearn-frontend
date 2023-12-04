@@ -1,3 +1,11 @@
+Protótipo do violearn, que tem como objetivo ser um aplicativo para aprendizado de violão;
+Nesse arquivos consta as funcionalidades de autentificação, criação e exclusão do usuário assim como a criação de posts
+
+Link do projeto -> https://violearn-frontend.vercel.app/
+
+Para testes do frontend, abrir o projeto no vscode, rodar o comando npm start e aguardar a abertura da janela do navegador
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
