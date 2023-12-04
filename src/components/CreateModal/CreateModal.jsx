@@ -70,6 +70,7 @@ const CreateModal = () => {
 	                    "postPath": url,
 	                    "likeCount": 0
                     }
+                    console.log(payload)
 
                     const requestOptions = {
                         method: "POST",
@@ -88,9 +89,11 @@ const CreateModal = () => {
 
                     })
 
+                    window.location.reload();
+                    setLoading(false)
+
                 })
-                window.location.reload();
-                setLoading(false)
+                
             }
         )
 
@@ -119,7 +122,6 @@ const CreateModal = () => {
                     onChange={(e) => setText(e.target.value)}></textarea>
                     {!selectedFile && <button  className="btn" disabled>Enviar</button> }
                     {selectedFile && <button  className="btn">Enviar</button> }
-                    {loading && <button className="btn" disabled>Aguarde...</button> }
                     </form>      
             </div>
         </div>
